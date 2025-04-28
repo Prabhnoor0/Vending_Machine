@@ -17,17 +17,18 @@ vending_machine/
 
 ### Backend Dependencies
 
-#### CMake
+#### CMake and Make
 - **macOS**:
   ```sh
   # Using Homebrew
-  brew install cmake
+  brew install cmake make
   ```
   [Download from Homebrew](https://brew.sh/)
 
 - **Windows**:
-  - Download the installer from [CMake Downloads](https://cmake.org/download/)
-  - During installation, select "Add CMake to the system PATH"
+  - Download CMake from [CMake Downloads](https://cmake.org/download/)
+  - Download Make from [GNU Make for Windows](https://www.gnu.org/software/make/)
+  - Add both to your system PATH
   - Restart your terminal after installation
 
 #### C++ Compiler
@@ -81,15 +82,8 @@ vending_machine/
 
 ### Option 1: Run Both Frontend and Backend Together
 
-#### macOS
+#### macOS/Windows
 ```sh
-cd frontend
-npm install
-npm run dev:all
-```
-
-#### Windows
-```powershell
 cd frontend
 npm install
 npm run dev:all
@@ -103,18 +97,17 @@ This will start both servers:
 
 #### Running the Backend
 
-##### macOS
+##### macOS/Windows
 ```sh
 cd backend
-chmod +x run_dev.sh
-./run_dev.sh
+make run
 ```
 
-##### Windows
-```powershell
-cd backend
-.\run_dev.ps1
-```
+Available make commands:
+- `make build` - Build the project
+- `make run`   - Build and run the server
+- `make clean` - Clean build files
+- `make help`  - Show available commands
 
 #### Running the Frontend
 ```sh
@@ -128,8 +121,8 @@ npm run dev
 ## Development Workflow
 
 1. **Start the Backend**:
-   - Use the appropriate script for your OS (see above)
-   - The backend will automatically create the build directory if needed
+   - Use `make run` in the backend directory
+   - The backend will automatically build if needed
    - Data is stored in:
      - macOS: `~/.vendingmachine/data.json`
      - Windows: `%APPDATA%\VendingMachine\data.json`
@@ -140,7 +133,7 @@ npm run dev
    - Changes will be reflected immediately
 
 3. **Making Changes**:
-   - Backend changes require a server restart
+   - Backend changes require a server restart (`make run` again)
    - Frontend changes are automatically reloaded
    - Both Windows and macOS users can work on the same codebase
 
@@ -154,6 +147,7 @@ npm run dev
   - Check if port 8080 is available
   - Verify OpenSSL is installed correctly
   - On Windows, ensure Visual Studio C++ tools are installed
+  - Try `make clean` followed by `make run`
 
 - **Frontend Can't Connect?**
   - Ensure the backend is running
@@ -167,10 +161,9 @@ npm run dev
 ### Platform-Specific Issues
 
 #### Windows
-- If PowerShell scripts are disabled:
-  ```powershell
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-  ```
+- If Make is not found:
+  - Add Make to your system PATH
+  - Restart your terminal
 - If OpenSSL is not found:
   - Add OpenSSL to your system PATH
   - Restart your terminal
