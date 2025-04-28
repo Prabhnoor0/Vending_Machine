@@ -4,6 +4,19 @@ This project is a full-stack vending machine application with a C++ backend and 
 
 ---
 
+## Prerequisites
+
+### Backend Dependencies
+- CMake (version 3.10 or higher)
+- C++ compiler (supporting C++17 or higher)
+- Make
+
+### Frontend Dependencies
+- Node.js (version 16 or higher)
+- npm (version 7 or higher)
+
+---
+
 ## Project Structure
 
 ```
@@ -15,9 +28,25 @@ vending_machine/
 
 ---
 
-## Backend (C++ API Server)
+## Quick Start (Running Both Frontend and Backend Together)
 
-### 1. Build the Backend
+You can run both servers with a single command from the `frontend` directory:
+
+```sh
+cd frontend
+npm install
+npm run dev:all
+```
+- This will start both the backend and frontend servers.
+- Open http://localhost:5173 in your browser to use the vending machine UI.
+
+---
+
+## Individual Setup Instructions
+
+### Backend (C++ API Server)
+
+#### 1. Build the Backend
 ```sh
 cd backend
 mkdir -p build
@@ -26,7 +55,7 @@ cmake ..
 make
 ```
 
-### 2. Run the Backend Server
+#### 2. Run the Backend Server
 ```sh
 ./vending_machine_server
 ```
@@ -37,17 +66,15 @@ make
   - `POST   /api/purchase`
   - `POST   /api/return-change`
 
----
+### Frontend (React + MUI)
 
-## Frontend (React + MUI)
-
-### 1. Install Dependencies
+#### 1. Install Dependencies
 ```sh
 cd frontend
 npm install
 ```
 
-### 2. Run the Frontend Dev Server
+#### 2. Run the Frontend Dev Server
 ```sh
 npm run dev
 ```
@@ -58,17 +85,6 @@ npm run dev
 > ```sh
 > cd frontend
 > ```
-
-## Run Both Frontend and Backend Together (Dev)
-
-You can run both servers with a single command from the `frontend` directory:
-
-```sh
-cd frontend
-npm run dev:all
-```
-- This will start both the backend and frontend servers.
-- Open http://localhost:5173 in your browser.
 
 ---
 
