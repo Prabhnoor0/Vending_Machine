@@ -79,32 +79,49 @@ vending_machine/
 
 ## Quick Start
 
-### Running the Backend
+### Option 1: Run Both Frontend and Backend Together
 
 #### macOS
+```sh
+cd frontend
+npm install
+npm run dev:all
+```
+
+#### Windows
+```powershell
+cd frontend
+npm install
+npm run dev:all
+```
+
+This will start both servers:
+- Backend at: **http://localhost:8080**
+- Frontend at: **http://localhost:5173**
+
+### Option 2: Run Services Separately
+
+#### Running the Backend
+
+##### macOS
 ```sh
 cd backend
 chmod +x run_dev.sh
 ./run_dev.sh
 ```
 
-#### Windows
+##### Windows
 ```powershell
 cd backend
 .\run_dev.ps1
 ```
 
-The backend server will start at: **http://localhost:8080**
-
-### Running the Frontend
-
+#### Running the Frontend
 ```sh
 cd frontend
 npm install
 npm run dev
 ```
-
-The frontend will start at: **http://localhost:5173**
 
 ---
 
