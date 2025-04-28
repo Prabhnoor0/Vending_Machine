@@ -24,4 +24,4 @@ private:
     double balance;
 };
 
-#endif // VENDING_MACHINE_H 
+#endif 

@@ -3,7 +3,6 @@
 #include <stdexcept>
 
 VendingMachine::VendingMachine() {
-    // Initialize with some default items
     items = {
         {"Coke", 1.50, 10},
         {"Pepsi", 1.50, 10},
