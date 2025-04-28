@@ -3,28 +3,93 @@
 This project is a full-stack vending machine application with a C++ backend and a React/MUI frontend.
 
 ---
-
-## Prerequisites
-
-### Backend Dependencies
-- CMake (version 3.10 or higher)
-- C++ compiler (supporting C++17 or higher)
-- Make
-
-### Frontend Dependencies
-- Node.js (version 16 or higher)
-- npm (version 7 or higher)
-
----
-
 ## Project Structure
 
 ```
 vending_machine/
 ├── backend/      # C++ API server
-├── frontend/     # React frontend
-└── README.md     # This file
+└── frontend/     # React frontend
 ```
+
+---
+
+## Prerequisites
+
+### Backend Dependencies
+
+#### CMake
+- **macOS**:
+  ```sh
+  # Using Homebrew
+  brew install cmake
+  ```
+  [Download from Homebrew](https://brew.sh/)
+
+- **Windows**:
+  - Download the installer from [CMake Downloads](https://cmake.org/download/)
+  - During installation, select "Add CMake to the system PATH"
+  - Restart your terminal after installation
+
+- **Linux (Ubuntu/Debian)**:
+  ```sh
+  sudo apt-get update
+  sudo apt-get install cmake
+  ```
+
+#### C++ Compiler
+- **macOS**:
+  ```sh
+  # Install Xcode Command Line Tools
+  xcode-select --install
+  ```
+  [Download Xcode](https://developer.apple.com/xcode/)
+
+- **Windows**:
+  - Download and install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
+  - During installation, select "Desktop development with C++"
+  - Or install [MinGW-w64](https://www.mingw-w64.org/)
+
+- **Linux (Ubuntu/Debian)**:
+  ```sh
+  sudo apt-get update
+  sudo apt-get install build-essential
+  ```
+
+#### Make
+- **macOS**: Included with Xcode Command Line Tools
+- **Windows**: Included with Visual Studio or MinGW
+- **Linux (Ubuntu/Debian)**:
+  ```sh
+  sudo apt-get update
+  sudo apt-get install make
+  ```
+
+### Frontend Dependencies
+
+#### Node.js and npm
+- **macOS**:
+  ```sh
+  # Using Homebrew
+  brew install node
+  ```
+  Or download from [Node.js Official Website](https://nodejs.org/)
+
+- **Windows**:
+  - Download the LTS version from [Node.js Official Website](https://nodejs.org/)
+  - Run the installer and follow the instructions
+  - Restart your terminal after installation
+
+- **Linux (Ubuntu/Debian)**:
+  ```sh
+  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ```
+
+> **Note**: After installing Node.js, verify your installation:
+> ```sh
+> node --version
+> npm --version
+> ```
 
 ---
 
