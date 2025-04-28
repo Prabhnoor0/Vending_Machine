@@ -1,0 +1,29 @@
+{
+    "name": "vending-machine-frontend",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "start:backend": "cd ../backend/build && ./vending_machine_server",
+        "dev:all": "concurrently \"npm run start:backend\" \"npm run dev\""
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.0",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.14.0",
+        "@mui/material": "^5.14.0",
+        "axios": "^1.6.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.0",
+        "@types/react-dom": "^18.2.0",
+        "@vitejs/plugin-react": "^4.0.0",
+        "concurrently": "^9.1.2",
+        "vite": "^4.4.0"
+    }
+}

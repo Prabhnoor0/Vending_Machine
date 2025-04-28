@@ -1,0 +1,3 @@
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/vending_machine_server.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/edit_cache.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/rebuild_cache.dir
