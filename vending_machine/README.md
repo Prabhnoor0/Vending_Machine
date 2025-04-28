@@ -30,12 +30,6 @@ vending_machine/
   - During installation, select "Add CMake to the system PATH"
   - Restart your terminal after installation
 
-- **Linux (Ubuntu/Debian)**:
-  ```sh
-  sudo apt-get update
-  sudo apt-get install cmake
-  ```
-
 #### C++ Compiler
 - **macOS**:
   ```sh
@@ -49,20 +43,16 @@ vending_machine/
   - During installation, select "Desktop development with C++"
   - Or install [MinGW-w64](https://www.mingw-w64.org/)
 
-- **Linux (Ubuntu/Debian)**:
+#### OpenSSL
+- **macOS**:
   ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential
+  brew install openssl
   ```
 
-#### Make
-- **macOS**: Included with Xcode Command Line Tools
-- **Windows**: Included with Visual Studio or MinGW
-- **Linux (Ubuntu/Debian)**:
-  ```sh
-  sudo apt-get update
-  sudo apt-get install make
-  ```
+- **Windows**:
+  - Download from [OpenSSL for Windows](https://slproweb.com/products/Win32OpenSSL.html)
+  - Install the full version (not light)
+  - Add OpenSSL to your system PATH
 
 ### Frontend Dependencies
 
@@ -79,12 +69,6 @@ vending_machine/
   - Run the installer and follow the instructions
   - Restart your terminal after installation
 
-- **Linux (Ubuntu/Debian)**:
-  ```sh
-  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-  ```
-
 > **Note**: After installing Node.js, verify your installation:
 > ```sh
 > node --version
@@ -93,90 +77,107 @@ vending_machine/
 
 ---
 
-## Quick Start (Running Both Frontend and Backend Together)
+## Quick Start
 
-You can run both servers with a single command from the `frontend` directory:
+### Running the Backend
+
+#### macOS
+```sh
+cd backend
+chmod +x run_dev.sh
+./run_dev.sh
+```
+
+#### Windows
+```powershell
+cd backend
+.\run_dev.ps1
+```
+
+The backend server will start at: **http://localhost:8080**
+
+### Running the Frontend
 
 ```sh
 cd frontend
 npm install
-npm run dev:all
+npm run dev
 ```
-- This will start both the backend and frontend servers.
-- Open http://localhost:5173 in your browser to use the vending machine UI.
+
+The frontend will start at: **http://localhost:5173**
 
 ---
 
-## Individual Setup Instructions
+## Development Workflow
 
-### Backend (C++ API Server)
+1. **Start the Backend**:
+   - Use the appropriate script for your OS (see above)
+   - The backend will automatically create the build directory if needed
+   - Data is stored in:
+     - macOS: `~/.vendingmachine/data.json`
+     - Windows: `%APPDATA%\VendingMachine\data.json`
 
-#### 1. Build the Backend
-```sh
-cd backend
-mkdir -p build
-cd build
-cmake ..
-make
-```
+2. **Start the Frontend**:
+   - The frontend will automatically connect to the backend
+   - Hot reloading is enabled for development
+   - Changes will be reflected immediately
 
-#### 2. Run the Backend Server
-```sh
-./vending_machine_server
-```
-- The backend will start at: **http://localhost:8080**
-- API endpoints:
-  - `GET    /api/items`
-  - `POST   /api/insert-money`
-  - `POST   /api/purchase`
-  - `POST   /api/return-change`
-
-### Frontend (React + MUI)
-
-#### 1. Install Dependencies
-```sh
-cd frontend
-npm install
-```
-
-#### 2. Run the Frontend Dev Server
-```sh
-npm run dev
-```
-- The frontend will start at: **http://localhost:5173** (or the next available port)
-- Open this URL in your browser to use the vending machine UI.
-
-> **Note:** Always run npm commands from the `frontend` directory. If you are in the project root, first run:
-> ```sh
-> cd frontend
-> ```
+3. **Making Changes**:
+   - Backend changes require a server restart
+   - Frontend changes are automatically reloaded
+   - Both Windows and macOS users can work on the same codebase
 
 ---
 
 ## Troubleshooting
 
-- **Blank Page in Browser?**
-  - Check the browser console for errors (F12 > Console tab)
-  - Make sure both backend and frontend servers are running
-  - Make sure you are in the correct directory when running commands
+### Common Issues
 
-- **Port Already in Use?**
-  - Stop all running servers (Ctrl+C in each terminal)
-  - If needed, kill processes using ports 5173/5174/5175:
-    ```sh
-    lsof -i :5173,5174,5175 | grep LISTEN
-    kill <PID1> <PID2> ...
-    ```
+- **Backend Won't Start?**
+  - Check if port 8080 is available
+  - Verify OpenSSL is installed correctly
+  - On Windows, ensure Visual Studio C++ tools are installed
 
-- **Backend Not Found (404)?**
-  - The backend is an API server, not a web page. Only the frontend should be opened in the browser.
+- **Frontend Can't Connect?**
+  - Ensure the backend is running
+  - Check browser console for CORS errors
+  - Verify both servers are using the correct ports
 
-- **Dependency Issues?**
-  - In `frontend/`, try:
-    ```sh
-    rm -rf node_modules package-lock.json
-    npm install
-    ```
+- **Data Not Saving?**
+  - Check file permissions in the data directory
+  - Verify the directory exists and is writable
+
+### Platform-Specific Issues
+
+#### Windows
+- If PowerShell scripts are disabled:
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+- If OpenSSL is not found:
+  - Add OpenSSL to your system PATH
+  - Restart your terminal
+
+#### macOS
+- If Xcode tools are missing:
+  ```sh
+  xcode-select --install
+  ```
+- If Homebrew is not installed:
+  ```sh
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+
+---
+
+## API Endpoints
+
+The backend provides the following endpoints:
+
+- `GET    /api/items` - Get available items
+- `POST   /api/insert-money` - Insert money
+- `POST   /api/purchase` - Purchase an item
+- `POST   /api/return-change` - Return change
 
 ---
 

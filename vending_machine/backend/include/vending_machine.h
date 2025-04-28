@@ -18,6 +18,7 @@ public:
     std::vector<Item> getAvailableItems() const;
     bool purchaseItem(const std::string& itemName);
     double returnChange();
+    void setItems(const std::vector<Item>& newItems);
 
 private:
     std::vector<Item> items;
