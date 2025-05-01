@@ -1,89 +1,41 @@
-#include "../include/vending_machine.h"
 #include "httplib.h"
-#include "../lib/json/json.hpp"
-#include <iostream>
-#include <fstream>
-#include <filesystem>
-#include <cstdlib>
+#include "vending_machine.h"
+#include "payment.hpp"
+#include "inventory.hpp"
+#include "transaction.hpp"
+#include <memory>
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
-namespace fs = std::filesystem;
-
-// Get the data directory path in a cross-platform way
-std::string getDataFilePath() {
-    const char* appData = std::getenv("APPDATA");
-    fs::path dataDir;
-    
-    if (appData) {
-        // Windows: Use AppData directory
-        dataDir = fs::path(appData) / "VendingMachine";
-    } else {
-        // Unix-like: Use home directory
-        const char* home = std::getenv("HOME");
-        dataDir = fs::path(home ? home : ".") / ".vendingmachine";
-    }
-    
-    // Create directory if it doesn't exist
-    fs::create_directories(dataDir);
-    
-    return (dataDir / "data.json").string();
-}
-
-void saveMachineState(const VendingMachine& vm) {
-    json data;
-    data["balance"] = vm.getBalance();
-    auto items = vm.getAvailableItems();
-    for (const auto& item : items) {
-        data["items"].push_back({
-            {"name", item.name},
-            {"price", item.price},
-            {"quantity", item.quantity}
-        });
-    }
-    
-    std::ofstream file(getDataFilePath());
-    if (file.is_open()) {
-        file << data.dump(4);
-    }
-}
-
-void loadMachineState(VendingMachine& vm) {
-    std::string dataFile = getDataFilePath();
-    if (!fs::exists(dataFile)) {
-        return;
-    }
-    
-    std::ifstream file(dataFile);
-    if (file.is_open()) {
-        json data;
-        file >> data;
-        
-        // Load balance
-        vm.insertMoney(data["balance"].get<double>());
-        
-        // Load items
-        std::vector<Item> items;
-        for (const auto& itemData : data["items"]) {
-            items.push_back({
-                itemData["name"].get<std::string>(),
-                itemData["price"].get<double>(),
-                itemData["quantity"].get<int>()
-            });
-        }
-        vm.setItems(items);
-    }
-}
 
 int main() {
-    VendingMachine vm;
+    // Create dependencies with dependency injection
+    auto paymentMethod = std::make_unique<CashPayment>();
+    auto inventory = std::make_unique<Inventory>();
+    auto transactionLog = std::make_unique<TransactionLog>();
+    
+    // Create vending machine with dependencies
+    VendingMachine vendingMachine(std::move(paymentMethod), 
+                                std::move(inventory), 
+                                std::move(transactionLog));
+
+    // Add items using the new item types
+    vendingMachine.addItem(std::make_unique<Beverage>("Coke", 1.5, 10, 330));
+    vendingMachine.addItem(std::make_unique<Beverage>("Pepsi", 1.2, 8, 330));
+    vendingMachine.addItem(std::make_unique<Beverage>("Water", 1.0, 15, 500));
+    vendingMachine.addItem(std::make_unique<Snack>("Chips", 1.8, 12, 50));
+    vendingMachine.addItem(std::make_unique<Snack>("Candy", 1.0, 20, 30));
+    vendingMachine.addItem(std::make_unique<Beverage>("Sprite", 1.5, 10, 330));
+    vendingMachine.addItem(std::make_unique<Beverage>("Fanta", 1.5, 10, 330));
+    vendingMachine.addItem(std::make_unique<Beverage>("Mountain Dew", 1.2, 8, 330));
+    vendingMachine.addItem(std::make_unique<Snack>("Doritos", 1.8, 12, 50));
+    vendingMachine.addItem(std::make_unique<Snack>("Snickers", 1.2, 15, 45));
+    vendingMachine.addItem(std::make_unique<Snack>("Twix", 1.2, 15, 45));
+    vendingMachine.addItem(std::make_unique<Snack>("KitKat", 1.2, 15, 45));
+
     httplib::Server svr;
 
-    // Load previous state if available
-    loadMachineState(vm);
-
     // Enable CORS
-    svr.set_base_dir("./");
-    svr.set_mount_point("/", "./");
     svr.set_pre_routing_handler([](const httplib::Request &req, httplib::Response &res) {
         res.set_header("Access-Control-Allow-Origin", "*");
         res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -95,61 +47,63 @@ int main() {
         return httplib::Server::HandlerResponse::Unhandled;
     });
 
-    // Get available items
-    svr.Get("/api/items", [&vm](const httplib::Request &, httplib::Response &res) {
-        auto items = vm.getAvailableItems();
-        json response;
-        for (const auto &item : items) {
+    // API endpoints
+    svr.Get("/api/items", [&vendingMachine](const httplib::Request&, httplib::Response &res) {
+        auto items = vendingMachine.getAvailableItems();
+        json response = json::array();
+        for (const auto& item : items) {
             response.push_back({
-                {"name", item.name},
-                {"price", item.price},
-                {"quantity", item.quantity}
+                {"name", item->getName()},
+                {"price", item->getPrice()},
+                {"quantity", item->getQuantity()},
+                {"type", item->getType()}
             });
         }
         res.set_content(response.dump(), "application/json");
     });
 
-    // Insert money
-    svr.Post("/api/insert-money", [&vm](const httplib::Request &req, httplib::Response &res) {
+    svr.Post("/api/insert-money", [&vendingMachine](const httplib::Request &req, httplib::Response &res) {
         try {
-            auto body = json::parse(req.body);
-            double amount = body["amount"];
-            vm.insertMoney(amount);
-            saveMachineState(vm);
-            res.set_content(json({{"balance", vm.getBalance()}}).dump(), "application/json");
-        } catch (const std::exception &e) {
+            auto data = json::parse(req.body);
+            if (!data.contains("amount")) {
+                res.status = 400;
+                res.set_content("Invalid request: missing amount", "text/plain");
+                return;
+            }
+            vendingMachine.insertMoney(data["amount"].get<double>());
+            res.set_content("Money inserted successfully", "text/plain");
+        } catch (const std::exception& e) {
             res.status = 400;
-            res.set_content(json({{"error", e.what()}}).dump(), "application/json");
+            res.set_content(e.what(), "text/plain");
         }
     });
 
-    // Purchase item
-    svr.Post("/api/purchase", [&vm](const httplib::Request &req, httplib::Response &res) {
+    svr.Post("/api/purchase", [&vendingMachine](const httplib::Request &req, httplib::Response &res) {
         try {
-            auto body = json::parse(req.body);
-            std::string itemName = body["item"];
-            vm.purchaseItem(itemName);
-            saveMachineState(vm);
-            res.set_content(json({{"balance", vm.getBalance()}}).dump(), "application/json");
-        } catch (const std::exception &e) {
+            auto data = json::parse(req.body);
+            if (!data.contains("item")) {
+                res.status = 400;
+                res.set_content("Invalid request: missing item", "text/plain");
+                return;
+            }
+            if (vendingMachine.purchaseItem(data["item"].get<std::string>())) {
+                res.set_content("Purchase successful", "text/plain");
+            } else {
+                res.status = 400;
+                res.set_content("Purchase failed", "text/plain");
+            }
+        } catch (const std::exception& e) {
             res.status = 400;
-            res.set_content(json({{"error", e.what()}}).dump(), "application/json");
+            res.set_content(e.what(), "text/plain");
         }
     });
 
-    // Return change
-    svr.Post("/api/return-change", [&vm](const httplib::Request &, httplib::Response &res) {
-        try {
-            double change = vm.returnChange();
-            saveMachineState(vm);
-            res.set_content(json({{"change", change}}).dump(), "application/json");
-        } catch (const std::exception &e) {
-            res.status = 400;
-            res.set_content(json({{"error", e.what()}}).dump(), "application/json");
-        }
+    svr.Post("/api/return-change", [&vendingMachine](const httplib::Request&, httplib::Response &res) {
+        double change = vendingMachine.returnChange();
+        res.set_content(std::to_string(change), "text/plain");
     });
 
-    std::cout << "Server started at http://0.0.0.0:8080" << std::endl;
-    svr.listen("0.0.0.0", 8080);
+    std::cout << "Server started at http://localhost:8080" << std::endl;
+    svr.listen("localhost", 8080);
     return 0;
 } 

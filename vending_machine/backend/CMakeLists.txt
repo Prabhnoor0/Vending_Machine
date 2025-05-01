@@ -14,16 +14,22 @@ if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")  # Enable C++ exceptions
 endif()
 
+# Add include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/httplib
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/json
     ${OPENSSL_INCLUDE_DIR}
 )
 
+# Add source files
 add_executable(vending_machine_server
     src/server.cpp
     src/vending_machine.cpp
+    src/payment.cpp
+    src/inventory.cpp
+    src/transaction.cpp
 )
 
 if(WIN32)

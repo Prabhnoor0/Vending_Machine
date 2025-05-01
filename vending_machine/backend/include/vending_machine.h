@@ -3,26 +3,36 @@
 
 #include <string>
 #include <vector>
-
-struct Item {
-    std::string name;
-    double price;
-    int quantity;
-};
+#include <memory>
+#include "payment.hpp"
+#include "inventory.hpp"
+#include "transaction.hpp"
 
 class VendingMachine {
 public:
-    VendingMachine();
+    // Constructor with dependency injection
+    VendingMachine(std::unique_ptr<IPaymentMethod> paymentMethod,
+                  std::unique_ptr<Inventory> inventory,
+                  std::unique_ptr<TransactionLog> transactionLog);
+
+    // Payment operations
     void insertMoney(double amount);
     double getBalance() const;
-    std::vector<Item> getAvailableItems() const;
-    bool purchaseItem(const std::string& itemName);
     double returnChange();
-    void setItems(const std::vector<Item>& newItems);
+
+    // Item operations
+    std::vector<std::unique_ptr<IItem>> getAvailableItems() const;
+    bool purchaseItem(const std::string& itemName);
+    void addItem(std::unique_ptr<IItem> item);
+    void refillItem(const std::string& itemName, int quantity);
+
+    // Transaction operations
+    std::vector<Transaction> getTransactionHistory() const;
 
 private:
-    std::vector<Item> items;
-    double balance;
+    std::unique_ptr<IPaymentMethod> paymentMethod;
+    std::unique_ptr<Inventory> inventory;
+    std::unique_ptr<TransactionLog> transactionLog;
 };
 
 #endif 
