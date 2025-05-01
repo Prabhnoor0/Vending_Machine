@@ -8,8 +8,19 @@ int main() {
     Inventory inventory;
     TransactionLog tlog;
 
+    // Add all items with initial quantities and prices
     inventory.addItem("Coke", 10, 1.5);
     inventory.addItem("Pepsi", 8, 1.2);
+    inventory.addItem("Water", 15, 1.0);
+    inventory.addItem("Chips", 12, 1.8);
+    inventory.addItem("Candy", 20, 1.0);
+    inventory.addItem("Sprite", 10, 1.5);
+    inventory.addItem("Fanta", 10, 1.5);
+    inventory.addItem("Mountain Dew", 8, 1.2);
+    inventory.addItem("Doritos", 12, 1.8);
+    inventory.addItem("Snickers", 15, 1.2);
+    inventory.addItem("Twix", 15, 1.2);
+    inventory.addItem("KitKat", 15, 1.2);
 
     CROW_ROUTE(app, "/items")
     ([&inventory]() {

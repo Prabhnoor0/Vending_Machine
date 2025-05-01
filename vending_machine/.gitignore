@@ -1,0 +1,17 @@
+# Build directories
+backend/build/
+frontend/dist/
+frontend/node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.temp 

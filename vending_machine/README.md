@@ -91,7 +91,7 @@ npm run dev:all
 
 This will start both servers:
 - Backend at: **http://localhost:8080**
-- Frontend at: **http://localhost:5173**
+- Frontend at: **http://localhost:5173** (or next available port if 5174 is in use)
 
 ### Option 2: Run Services Separately
 
@@ -123,9 +123,6 @@ npm run dev
 1. **Start the Backend**:
    - Use `make run` in the backend directory
    - The backend will automatically build if needed
-   - Data is stored in:
-     - macOS: `~/.vendingmachine/data.json`
-     - Windows: `%APPDATA%\VendingMachine\data.json`
 
 2. **Start the Frontend**:
    - The frontend will automatically connect to the backend
@@ -154,10 +151,6 @@ npm run dev
   - Check browser console for CORS errors
   - Verify both servers are using the correct ports
 
-- **Data Not Saving?**
-  - Check file permissions in the data directory
-  - Verify the directory exists and is writable
-
 ### Platform-Specific Issues
 
 #### Windows
@@ -185,8 +178,8 @@ npm run dev
 The backend provides the following endpoints:
 
 - `GET    /api/items` - Get available items
-- `POST   /api/insert-money` - Insert money
-- `POST   /api/purchase` - Purchase an item
+- `POST   /api/insert-money` - Insert money (body: { amount: number })
+- `POST   /api/purchase` - Purchase an item (body: { item: string, quantity: number })
 - `POST   /api/return-change` - Return change
 
 ---
