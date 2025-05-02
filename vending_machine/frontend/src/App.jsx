@@ -162,19 +162,20 @@ const BalancePaper = styled(Paper)(({ theme }) => ({
 
 // High-quality product images
 const productImages = {
-  coke: 'https://thumbs.dreamstime.com/b/coca-cola-drink-concept-red-background-cap-bottle-drops-tel-aviv-israel-september-soda-editorial-coke-cold-159732568.jpg',
-  pepsi: 'https://www.britvic.com/media/dexpeq1a/pepsi-max-britvic.jpg?rxy=0.5002748581597487,0.50890699280567031&width=1200&height=600&v=1da47e3fc42b770',
-  water: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcnZ_pogYeY9lR3UoEupPfxisp1MvBH8V3aw&s',
-  chips: 'https://sporked.com/wp-content/uploads/2022/05/IN-DEFENSE-OF-PLAIN-LAYS_DANNY-PALUMBO_SPORKED_HEADER.jpg',
-  candy: 'https://fox40.com/wp-content/uploads/sites/13/2023/01/MMsAP22021645371457.jpg',
-  sprite: 'https://www.sprite.com/content/dam/onexp/us/en/brands/sprite/product-images/sprite-bottle.png',
-  fanta: 'https://www.fanta.com/content/dam/onexp/us/en/brands/fanta/product-images/fanta-orange-bottle.png',
-  mountain_dew: 'https://www.mountaindew.com/content/dam/onexp/us/en/brands/mountain-dew/product-images/mountain-dew-bottle.png',
-  doritos: 'https://www.doritos.com/content/dam/onexp/us/en/brands/doritos/product-images/doritos-nacho-cheese.png',
-  snickers: 'https://www.snickers.com/content/dam/onexp/us/en/brands/snickers/product-images/snickers-bar.png',
-  twix: 'https://www.twix.com/content/dam/onexp/us/en/brands/twix/product-images/twix-bar.png',
-  kitkat: 'https://www.kitkat.com/content/dam/onexp/us/en/brands/kit-kat/product-images/kit-kat-bar.png'
+  coke: '../photos/coke.png',
+  pepsi: '../photos/pepsi.png',
+  water: '../photos/water.png', 
+  chips: '../photos/chips.png',
+  candy: '../photos/mnm.png', 
+  sprite: '../photos/sprite.png',
+  fanta: '../photos/fanta.png',
+  mountain_dew: '../photos/mountain.png',
+  doritos: '../photos/doritos.png',
+  snickers: '../photos/snickers.png',
+  twix: '../photos/twix.png',
+  kitkat: '../photos/kitkat.png'
 };
+
 
 function App() {
   const [items, setItems] = useState([]);
