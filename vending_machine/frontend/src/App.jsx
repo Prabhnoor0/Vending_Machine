@@ -213,15 +213,16 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.post(`${API_BASE_URL}/insert-money`, {
+      await axios.post(`${API_BASE_URL}/insert-money`, {
         amount: parseFloat(amount)
       });
-      setBalance(response.data.balance);
+      // Update balance by adding the inserted amount
+      setBalance(prevBalance => prevBalance + parseFloat(amount));
       setAmount('');
       showMessage('Money inserted successfully', 'success');
     } catch (error) {
-      setError(error.response?.data?.error || 'Error inserting money');
-      showMessage(error.response?.data?.error || 'Error inserting money', 'error');
+      setError(error.response?.data || 'Error inserting money');
+      showMessage(error.response?.data || 'Error inserting money', 'error');
     } finally {
       setLoading(false);
     }
@@ -255,11 +256,12 @@ function App() {
       setError(null);
       
       for (const item of selectedItems) {
-        const response = await axios.post(`${API_BASE_URL}/purchase`, {
+        await axios.post(`${API_BASE_URL}/purchase`, {
           item: item.name,
           quantity: item.quantity
         });
-        setBalance(response.data.balance);
+        // Update balance by subtracting the item price * quantity
+        setBalance(prevBalance => prevBalance - (item.price * item.quantity));
       }
       
       setDispensing(true);
@@ -277,8 +279,8 @@ function App() {
       await fetchItems();
       showMessage('Purchase successful', 'success');
     } catch (error) {
-      setError(error.response?.data?.error || 'Error purchasing items');
-      showMessage(error.response?.data?.error || 'Error purchasing items', 'error');
+      setError(error.response?.data || 'Error purchasing items');
+      showMessage(error.response?.data || 'Error purchasing items', 'error');
     } finally {
       setLoading(false);
     }
