@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/include -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/lib/httplib -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/lib/json -I/opt/homebrew/include
+CXX_INCLUDES = -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/include -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/lib -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/lib/httplib -I/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/lib/json -I/opt/homebrew/include
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

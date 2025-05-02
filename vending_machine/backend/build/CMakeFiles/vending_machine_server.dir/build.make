@@ -100,21 +100,69 @@ CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/vending_machine.cpp -o CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.s
 
+CMakeFiles/vending_machine_server.dir/src/payment.cpp.o: CMakeFiles/vending_machine_server.dir/flags.make
+CMakeFiles/vending_machine_server.dir/src/payment.cpp.o: /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/payment.cpp
+CMakeFiles/vending_machine_server.dir/src/payment.cpp.o: CMakeFiles/vending_machine_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vending_machine_server.dir/src/payment.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vending_machine_server.dir/src/payment.cpp.o -MF CMakeFiles/vending_machine_server.dir/src/payment.cpp.o.d -o CMakeFiles/vending_machine_server.dir/src/payment.cpp.o -c /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/payment.cpp
+
+CMakeFiles/vending_machine_server.dir/src/payment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vending_machine_server.dir/src/payment.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/payment.cpp > CMakeFiles/vending_machine_server.dir/src/payment.cpp.i
+
+CMakeFiles/vending_machine_server.dir/src/payment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vending_machine_server.dir/src/payment.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/payment.cpp -o CMakeFiles/vending_machine_server.dir/src/payment.cpp.s
+
+CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o: CMakeFiles/vending_machine_server.dir/flags.make
+CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o: /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/inventory.cpp
+CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o: CMakeFiles/vending_machine_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o -MF CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o.d -o CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o -c /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/inventory.cpp
+
+CMakeFiles/vending_machine_server.dir/src/inventory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vending_machine_server.dir/src/inventory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/inventory.cpp > CMakeFiles/vending_machine_server.dir/src/inventory.cpp.i
+
+CMakeFiles/vending_machine_server.dir/src/inventory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vending_machine_server.dir/src/inventory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/inventory.cpp -o CMakeFiles/vending_machine_server.dir/src/inventory.cpp.s
+
+CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o: CMakeFiles/vending_machine_server.dir/flags.make
+CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o: /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/transaction.cpp
+CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o: CMakeFiles/vending_machine_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o -MF CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o.d -o CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o -c /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/transaction.cpp
+
+CMakeFiles/vending_machine_server.dir/src/transaction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vending_machine_server.dir/src/transaction.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/transaction.cpp > CMakeFiles/vending_machine_server.dir/src/transaction.cpp.i
+
+CMakeFiles/vending_machine_server.dir/src/transaction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vending_machine_server.dir/src/transaction.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/transaction.cpp -o CMakeFiles/vending_machine_server.dir/src/transaction.cpp.s
+
 # Object files for target vending_machine_server
 vending_machine_server_OBJECTS = \
 "CMakeFiles/vending_machine_server.dir/src/server.cpp.o" \
-"CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.o"
+"CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.o" \
+"CMakeFiles/vending_machine_server.dir/src/payment.cpp.o" \
+"CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o" \
+"CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o"
 
 # External object files for target vending_machine_server
 vending_machine_server_EXTERNAL_OBJECTS =
 
 vending_machine_server: CMakeFiles/vending_machine_server.dir/src/server.cpp.o
 vending_machine_server: CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.o
+vending_machine_server: CMakeFiles/vending_machine_server.dir/src/payment.cpp.o
+vending_machine_server: CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o
+vending_machine_server: CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o
 vending_machine_server: CMakeFiles/vending_machine_server.dir/build.make
 vending_machine_server: /opt/homebrew/lib/libssl.dylib
 vending_machine_server: /opt/homebrew/lib/libcrypto.dylib
 vending_machine_server: CMakeFiles/vending_machine_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable vending_machine_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable vending_machine_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vending_machine_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

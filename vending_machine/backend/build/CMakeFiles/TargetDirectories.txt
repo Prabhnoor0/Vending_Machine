@@ -1,3 +1,7 @@
 /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/vending_machine_server.dir
 /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/edit_cache.dir
 /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/rebuild_cache.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/list_install_components.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/install.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/install/local.dir
+/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles/install/strip.dir

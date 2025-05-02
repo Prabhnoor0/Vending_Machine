@@ -8,7 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/inventory.cpp" "CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o" "gcc" "CMakeFiles/vending_machine_server.dir/src/inventory.cpp.o.d"
+  "/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/payment.cpp" "CMakeFiles/vending_machine_server.dir/src/payment.cpp.o" "gcc" "CMakeFiles/vending_machine_server.dir/src/payment.cpp.o.d"
   "/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/server.cpp" "CMakeFiles/vending_machine_server.dir/src/server.cpp.o" "gcc" "CMakeFiles/vending_machine_server.dir/src/server.cpp.o.d"
+  "/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/transaction.cpp" "CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o" "gcc" "CMakeFiles/vending_machine_server.dir/src/transaction.cpp.o.d"
   "/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/src/vending_machine.cpp" "CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.o" "gcc" "CMakeFiles/vending_machine_server.dir/src/vending_machine.cpp.o.d"
   )
 

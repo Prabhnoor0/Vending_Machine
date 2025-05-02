@@ -85,12 +85,12 @@ clean: CMakeFiles/vending_machine_server.dir/clean
 CMakeFiles/vending_machine_server.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vending_machine_server.dir/build.make CMakeFiles/vending_machine_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vending_machine_server.dir/build.make CMakeFiles/vending_machine_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=1,2,3 "Built target vending_machine_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target vending_machine_server"
 .PHONY : CMakeFiles/vending_machine_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vending_machine_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vending_machine_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles 0
 .PHONY : CMakeFiles/vending_machine_server.dir/rule
@@ -102,7 +102,7 @@ vending_machine_server: CMakeFiles/vending_machine_server.dir/rule
 # codegen rule for target.
 CMakeFiles/vending_machine_server.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vending_machine_server.dir/build.make CMakeFiles/vending_machine_server.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target vending_machine_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prabhnoorkaur/vendingmachine/vending_machine/backend/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target vending_machine_server"
 .PHONY : CMakeFiles/vending_machine_server.dir/codegen
 
 # clean rule for target.
