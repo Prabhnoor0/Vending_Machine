@@ -1,6 +1,6 @@
 # Vending Machine Project
 
-This project is a full-stack vending machine application with a C++ backend and a React/MUI frontend.
+This project is a full-stack vending machine application with a C++ backend and a React frontend.
 
 ---
 ## Project Structure
